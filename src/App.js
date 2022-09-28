@@ -1,25 +1,63 @@
-import logo from './logo.svg';
-import './App.css';
+import axios from 'axios';
+import React, { useEffect, useState } from 'react';
+import Footer from './components/Footer';
+import Header from './components/Header';
+import Main from './pages/Main';
+import List from './shop/List';
+import Itm from './shop/Itm';
+import Cart from './shop/Cart';
+import './css/ShopDetail.scss';
+import { Route, Routes } from 'react-router-dom';
 
-function App() {
+const App = () => {
+  const [itm, setItm] = useState();
+  const [cart, setCart] = useState([]);
+  // useEffect(() => {
+  //   window.scrollTo(0, 0);
+  //   return () => {
+  //     window.scrollTo(0, 0);
+  //   }
+  // }, []);
+  useEffect(() => {
+    const url = "https://desipossa.github.io/shop_cra/assets/data.json"
+    const getProduct = async () => {
+      const res = await axios.get(url);
+      const shopdata = res.data.slice(50, 140).map(it => {
+        return {
+          id: it.id,
+          name: it.name,
+          src: it.image_link,
+          brand: it.brand,
+          cate: it.category,
+          price: it.price * 1450,
+          des: it.description,
+          color: it.product_colors,
+          time: it.created_at,
+          type: it.product_type,
+        }
+      });
+      setItm(shopdata);
+      console.log(res.data);
+      console.log(shopdata);
+    }
+    getProduct();
+  }, []);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <>
+      <Header cart={cart} />
+      {
+        itm ?
+          <Routes>
+            <Route path='/' element={<Main />} />
+            <Route path='/cart' element={<Cart cart={cart} />} />
+            <Route path='/shopList' element={<List shopList={itm} />} />
+            <Route path='/shopItem/:itm' element={<Itm shopList={itm} cart={cart} setCart={setCart} />} />
+          </Routes>
+          : <div>로딩 중 입니다.</div>
+      }
+      <Footer />
+    </>
+  )
 }
 
 export default App;
