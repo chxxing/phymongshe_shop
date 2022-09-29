@@ -14,7 +14,7 @@ const Itm = ({ shopList, cart, setCart }) => {
                 </div>
                 <div className="right">
                     <div className="name">{matchItm.name}</div>
-                    <div className="des">{matchItm.des.substring(0, 100)} ...</div>
+                    <div className="des">{matchItm.des.substring(0, 300)} ...</div>
                     <ul className='color'>
                         {
                             matchItm.color.map((color, idx) => {
@@ -28,7 +28,7 @@ const Itm = ({ shopList, cart, setCart }) => {
                     <button onClick={() => {
                         setCart([
                             ...cart,
-                            { id: matchItm.id, itm: matchItm.name }
+                            { id: matchItm.id, itm: matchItm.name, e: 1 }
                         ])
                         navigate('/cart');
                     }

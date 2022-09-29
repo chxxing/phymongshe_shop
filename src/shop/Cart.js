@@ -7,12 +7,12 @@ const Cart = ({ cart, setCart }) => {
     return (
         <div style={{ paddingTop: '500px' }}>
             {
-                cart.map(ca => {
+                cart.map((ca, idx) => {
                     return (
-                        <ul>
+                        <ul key={idx}>
                             <li>{ca.id}</li>
                             <li>{ca.itm}</li>
-                            <li>{ca.e}</li>
+                            <li>{ca.e} 개의 상품을 담았습니다.</li>
                         </ul>
                     )
                 })
