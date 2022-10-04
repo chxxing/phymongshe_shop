@@ -1,20 +1,11 @@
-import React from 'react';
+import React from 'react'
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
-const MainCategory = ({ shopList, category }) => {
+const MainCategory = ({ shopList, category, bg }) => {
     const Mainlist = shopList.filter(it => category === it.cate);
-    // const H2 = styled.div`
-    // font-size: 2rem;
-    // font-weight: 500;
-    // padding: 30px 0;
-    // margin: 0 auto 30px auto;
-    // border-bottom: 1px solid #ddd;
-    // width: 1170px;
-    // `
     return (
-        <section className='shopList'>
-            {/* <H2>{category}</H2> */}
+        <section className={`shopList sc ${bg ? 'bg' : ''}`}>
             <div className='inner'>
                 {
                     Mainlist.map(it => {
@@ -24,9 +15,9 @@ const MainCategory = ({ shopList, category }) => {
                                     <div className="box">
                                         <img src={it.src} alt="" />
                                     </div>
-                                    <div className="name">{it.name}</div>
-                                    <div className="des">{it.des.substring(0, 100)} ...</div>
-                                    <div className="price"><span>{it.price.toLocaleString()}</span> 원</div>
+                                    <div className='name'>{it.name}</div>
+                                    <div className='des'>{it.des.substring(0, 100)} ...</div>
+                                    <div className='price'><span>{it.price.toLocaleString()}</span> 원</div>
                                 </Link>
                             </figure>
                         )
@@ -37,4 +28,4 @@ const MainCategory = ({ shopList, category }) => {
     )
 }
 
-export default MainCategory;
+export default MainCategory

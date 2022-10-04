@@ -5,10 +5,9 @@
     top: 0;
     left: 0;
     right: 0;
-    z-index: 999;
+    z-index: 1000;
     line-height: 7.9rem;
     border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-
 
     &.on .gnb {
         background: common.$wColor;
@@ -20,7 +19,7 @@
 
         ul {
             display: flex;
-            gap: 4rem;
+            gap: 40px;
             font-size: 1.5rem;
 
             li {
@@ -29,11 +28,11 @@
 
             .list {
                 text-transform: uppercase;
-                color: common.$mainColor;
+                color: rgba(0, 0, 0, 0.75);
             }
 
             &.rt {
-                gap: 2rem;
+                gap: 20px;
                 font-size: 2.5rem;
                 color: rgba(0, 0, 0, 0.35);
 
@@ -65,5 +64,15 @@
         position: absolute;
         top: 0;
         right: 8rem;
+
+        .search {
+            position: absolute;
+            top: 0;
+            left: -50rem;
+            font-size: 1.3rem;
+
+        }
     }
+
+
 }
