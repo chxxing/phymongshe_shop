@@ -4,7 +4,8 @@ import Itm from '../shop/Itm';
 import MainTab from '../components/MainTab';
 import '../css/Main.scss'
 import MainCategory from '../components/MainCategory';
-import MainProuctSlide from '../components/MainProuctSlide';
+import MainProuctSlide from '../components/MainProductSlide';
+
 
 const Main = ({ shopList }) => {
     return (
