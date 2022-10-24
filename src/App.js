@@ -63,8 +63,6 @@ const App = () => {
       {
         itm ?
           <div className='wapper'>
-
-
             <Header cart={cart} shopList={itm} searchInput={searchInput} setSearchInput={setSearchInput} search={search} setSearch={setSearch} />
             <Routes>
               <Route path='/' element={<Main shopList={itm} />} />
