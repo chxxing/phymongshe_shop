@@ -22,8 +22,6 @@ const List = ({ shopList }) => {
         onSortList(it)
     }
 
-
-
     return (
         <section className='shopList pn'>
             <div className="category">
